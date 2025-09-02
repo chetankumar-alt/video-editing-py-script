@@ -1,0 +1,22 @@
+from moviepy.editor import VideoFileClip, TextClip, CompositeVideoClip
+
+# Load your original video
+video = VideoFileClip("NCET CSE department freshers 2k19 Event intro.mp4")
+
+# Text 1: Event of the Year 2k25
+text1 = (TextClip("Event of the Year 2k25", fontsize=80, color="gold", font="Arial-Bold")
+         .set_position("center")
+         .set_duration(5)  # adjust timing as per your video
+        )
+
+# Text 2: Welcoming you Wonderla Family for 20th Vijayothsava
+text2 = (TextClip("Welcoming you Wonderla Family for 20th Vijayothsava", fontsize=60, color="gold", font="Arial-Bold")
+         .set_position(("center", "bottom"))
+         .set_duration(5)  # adjust timing as per your video
+        )
+
+# Overlay text on the video
+final = CompositeVideoClip([video, text1.set_start(0), text2.set_start(5)])
+
+# Export in HD
+final.write_videofile("Wonderla_20th_Vijayothsava.mp4", codec="libx264", fps=30, preset="ultrafast", audio_codec="aac")
